@@ -1,0 +1,120 @@
+<html>
+    <head>
+        <title>Code Blue</title>
+
+        <style>
+            @import url("./css/reset.css");
+            @import url("./css/common.css");
+            @import url("./css/desktop.css");
+        </style>
+        <!-- NEW -->
+        <script src="bcsocket.js"></script>             <!-- add transport -->
+        <script src="webclient/share.js"></script>      <!-- ShareJS -->
+        <script src="webclient/textarea.js"></script>   <!-- helper to attach textarea to ShareJS server -->
+        <!-- /NEW -->
+
+        <script src='https://swww.tokbox.com/webrtc/v2.0/js/TB.min.js'></script>
+
+    </head>
+    <body>
+        <header id="header">
+        <h1 id="header-title"><a href="index.html">Code Blue</a></h1>
+
+        <nav id="header-nav">
+            <ul>
+                <li><a href="about.html">What's Code Blue</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+            </ul>
+        </nav>
+        
+        <div class="clear"></div>
+        
+    </header>
+    
+    <section id="content">
+        
+        <div id="padding-content"><!-- padding-content -->
+
+          <div class='code-margin' style="text-size: 8px;"></div>
+
+            <div id="text-editor">
+                <textarea id="sharetext"></textarea>
+             </div>
+             
+             <div id="instant_chat">
+
+                <div id="myPublisherDiv"></div>
+        <script type="text/javascript">
+          // Initialize API key, session, and token...
+          // Think of a session as a room, and a token as the key to get in to the room
+          // Sessions and tokens are generated on your server and passed down to the client
+          var apiKey = "23830492";
+          var sessionId = "2_MX4yMzgzMDQ5Mn4xMjcuMC4wLjF-V2VkIE1heSAwOCAxMDo1NToxNiBQRFQgMjAxM34wLjkzMTMwOTZ-";
+          var token = "T1==cGFydG5lcl9pZD0yMzgzMDQ5MiZzZGtfdmVyc2lvbj10YnJ1YnktdGJyYi12MC45MS4yMDExLTAyLTE3JnNpZz1lOWE3MWJhOWQ2NzUwYjZmYjk4NWQwZjkwOTM3ZjUyOTlhMGVlMGYyOnJvbGU9cHVibGlzaGVyJnNlc3Npb25faWQ9Ml9NWDR5TXpnek1EUTVNbjR4TWpjdU1DNHdMakYtVjJWa0lFMWhlU0F3T0NBeE1EbzFOVG94TmlCUVJGUWdNakF4TTM0d0xqa3pNVE13T1RaLSZjcmVhdGVfdGltZT0xMzY4MDM1NzQ0Jm5vbmNlPTAuNTYwMzYwNjExMjMyOTI5OSZleHBpcmVfdGltZT0xMzY4MTIyMTQ0JmNvbm5lY3Rpb25fZGF0YT0=";
+
+          // Initialize session, set up event listeners, and connect
+          var session = TB.initSession(sessionId);
+          session.addEventListener('sessionConnected', sessionConnectedHandler);
+          session.connect(apiKey, token);
+          
+          function sessionConnectedHandler(event) {
+            var publisher = TB.initPublisher(apiKey, 'myPublisherDiv');
+            session.publish(publisher);
+          }
+        </script>
+         
+             </div>
+             
+             <!-- <div id="friends_online_box">
+            <h3>Online Friends</h3>
+             </div> -->
+             
+        </div><!-- padding-content -->
+        
+    </section>
+    
+    <footer id="footer">
+        
+        <nav id="footer-nav">
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="">Legal</a></li>
+                <li><a href="">Github</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        
+    </footer>       
+
+        <!-- NEW -->
+        <script>
+            // get the textarea element 
+            var elem = document.getElementById("sharetext");
+            // connect to the server
+            var connection = sharejs.open('test', 'text', function(error, doc) {
+                // this function is called once the connection is opened
+                if (error) {
+                    console.log("ERROR:", error);
+                } else {
+                    // attach the ShareJS document to the textarea
+                    doc.attach_textarea(elem);
+                }
+            });
+        </script>
+        <!-- /NEW -->
+<script src="js/jquery.js"></script>             
+        <script>
+var count = 0;
+$(window).on('keypress', function(e) {
+  if(e.keyCode === 13) {
+    count++;
+    console.log(count);
+    $('.code-margin').append(count + '<br />');
+  }
+});
+</script>
+
+  
+    </body>
+</html>

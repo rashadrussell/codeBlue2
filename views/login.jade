@@ -1,0 +1,52 @@
+doctype 5
+html
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/style.css')
+
+body
+	header#header
+		h1#header-title 
+			a(href='/') 
+				Code Blue
+
+		nav#header-nav
+			ul
+				li 
+					a(href='about') 
+						|	What's Code Blue
+				li 
+					a(href='login') 
+						|	Login
+				li 
+					a(href='signup') 
+						|	Signup
+
+		div.clear
+
+	section#content
+
+		div#padding-content
+			form(method='post', action='/login')
+				p
+					|	Email
+					input(name='email') 
+				p
+					|	Password
+					input(type='password', name='password') 
+				p
+					button Login
+
+	footer#footer
+
+		nav#footer-nav
+
+			ul
+				li 
+					a(href='about') About
+				li 
+					a(href='terms') Terms
+				li 
+					a(href='') Github
+				li 
+					a(href='contact') Contact
